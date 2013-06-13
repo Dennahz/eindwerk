@@ -1,16 +1,12 @@
 <?php
 
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 
 /**
  * Description of Translate
  *
  * @author webmaster
  */
-class Syntra_Controller_Plugin_Translate extends Zend_Controller_Plugin_Abstract
+class Dennis_Controller_Plugin_Translate extends Zend_Controller_Plugin_Abstract
 {
     public function preDispatch(Zend_Controller_Request_Abstract $request)
     {
@@ -42,6 +38,7 @@ class Syntra_Controller_Plugin_Translate extends Zend_Controller_Plugin_Abstract
             $t = array($translation->tag => $translation->translation);
             $translate->addTranslation($t, $locale);
         }
+        
         
         //Maak overal beschikbaar
         Zend_Registry::set('Zend_Translate', $translate);

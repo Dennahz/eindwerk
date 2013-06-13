@@ -1,2 +1,22 @@
+body{font-family: verdana;font-size:11pt;}
 div#backgroundContainer{background:#ccc;margin:15px;}
-div#container{max-width:950px;width:100%;}
+div#container{margin:auto;max-width:950px;width:100%;}
+header{float:left;width:100%;}
+div#search{float:right;}
+
+ul{list-style-type:none;}
+
+/* Header */
+header{background-color:lightblue;margin-bottom:10px;}
+
+/* Nav */
+nav{float:left;}
+nav li{display:inline-block;margin:10px;background-color:gray;padding:10px;}
+nav li:first-child{margin-left:-40px;}
+nav li:hover{background-color:lightgray;}
+div#fp-cat-list{float:left;width:20%;height:300px;background-color:tomato;}
+div#fp-product-list{float:left;width:80%;}
+div#fp-product-list li{display:inline-block;width:27.40%;height:100px;padding:10px;margin:-10px 10px 25px 10px;background-color:white;}
+
+
+div#clear{clear:both;}

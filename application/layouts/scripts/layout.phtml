@@ -9,13 +9,18 @@
         <div id="container">
             <header>
                 <nav>
-                    
+                    <ul>
+                        <li><a href="/">Index</a></li>
+                        <li><a href="/page/view/id/1/lang/<?php echo $this->lang; ?>">About</a></li>
+                    </ul>
                 </nav>
                 <div id="search">
                     <?php echo $this->searchForm($this->searchForm); ?>
                 </div>
             </header>
             <?php echo $this->layout()->content; ?>
+            
+            <div id="clear">&nbsp;</div>
         </div>
     </div>
 </html>

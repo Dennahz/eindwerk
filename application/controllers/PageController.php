@@ -13,6 +13,32 @@ class PageController extends Zend_Controller_Action
         // action body
     }
 
+    public function viewAction()
+    {
+        // get ID from URL
+        $id = (int) $this->getParam('id');
+        
+        $lang = Zend_Registry::get('Zend_Locale');       
+        
+        
+        $m_page = new Application_Model_Page();
+        
+        $content = $m_page->getPageById($id, $lang);      
+        
+        if($content !== NULL)
+        {
+            $this->view->content = $m_page->getPageById($id, $lang);
+        }
+        else
+        {
+            // -> redirect to error page
+        }
+        
+        
+    }
+
 
 }
+
+
 
