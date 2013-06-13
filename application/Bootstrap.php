@@ -13,6 +13,13 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
         //$front->registerPlugin(new Dennis_Auth_Auth());
     }
     
+    protected function _initMyActionHelpers()
+    {
+        $this->bootstrap('frontController');
+        $search = Zend_Controller_Action_HelperBroker::getStaticHelper('Search');
+        Zend_Controller_Action_HelperBroker::addHelper($search);
+    }
+    
     public function _initDbAdapter()
     {
         $this->bootstrap('db');
