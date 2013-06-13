@@ -13,6 +13,17 @@ class OverviewController extends Zend_Controller_Action
         // action body
     }
 
+    public function searchAction()
+    {
+        $key = $this->getParam('keyword');
+        
+        $m_product = new Application_Model_Product();
+       
+        $result = $m_product->getProductsByKeyword($key);
+    }
+
 
 }
+
+
 

@@ -27,7 +27,7 @@ class PageController extends Zend_Controller_Action
         
         if($content !== NULL)
         {
-            $this->view->content = $m_page->getPageById($id, $lang);
+            $this->view->content = $content;
         }
         else
         {

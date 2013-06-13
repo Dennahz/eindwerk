@@ -5,8 +5,7 @@ class IndexController extends Zend_Controller_Action
 
     CONST LIMIT_CATS        =   5;
     CONST LIMIT_PRODUCTS    =   9;
-    CONST LOCALE            =   'nl_BE'; // Totdat dat alle locale systeem op punt staat. 1 == NL, 2 == Engels, ... 
-    
+        
     public function init()
     {
         /* Initialize action controller here */
