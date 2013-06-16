@@ -8,7 +8,7 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
         $front = $this->getresource('frontcontroller');
         
         $front->registerPlugin(new Dennis_Controller_Plugin_Translate());
-        //$front->registerPlugin(new Dennis_Controller_Plugin_Navigation());
+        $front->registerPlugin(new Dennis_Controller_Plugin_Navigation());
         //$front->registerPlugin(new Dennis_Auth_Acl());
         //$front->registerPlugin(new Dennis_Auth_Auth());
     }

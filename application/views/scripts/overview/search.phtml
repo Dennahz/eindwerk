@@ -1,4 +1,16 @@
-<br /><br />
-<div id="view-content">
-	<p>View script for controller <b>Overview</b> and script/action name <b>search</b></p>
+<div id="search-results">
+    <ul>
+        <?php foreach($this->result as $result)
+        {
+            
+        ?>
+        <li>
+            <figure>
+                <img src="http://placehold.it/250x150/ffffff" alt="placeholder" />
+            </figure>
+            <h2><?php echo $result['title']; ?></h2>
+            <p><?php echo $result['teaser']; ?></p>
+        <?php } ?>
+        </li>
+    </ul>
 </div>

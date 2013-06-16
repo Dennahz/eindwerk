@@ -2,7 +2,6 @@
 
 class PageController extends Zend_Controller_Action
 {
-
     public function init()
     {
         /* Initialize action controller here */
@@ -18,8 +17,7 @@ class PageController extends Zend_Controller_Action
         // get ID from URL
         $id = (int) $this->getParam('id');
         
-        $lang = Zend_Registry::get('Zend_Locale');       
-        
+        $lang = Zend_Registry::get('Zend_Locale');    
         
         $m_page = new Application_Model_Page();
         

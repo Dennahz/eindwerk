@@ -9,10 +9,7 @@
         <div id="container">
             <header>
                 <nav>
-                    <ul>
-                        <li><a href="/">Index</a></li>
-                        <li><a href="/page/view/id/1/lang/<?php echo $this->lang; ?>">About</a></li>
-                    </ul>
+                    <?php echo $this->navigation()->menu(); ?>
                 </nav>
                 <div id="search">
                     <?php echo $this->searchForm($this->searchForm); ?>

@@ -15,8 +15,6 @@ class IndexController extends Zend_Controller_Action
     {
         $lang = Zend_Registry::get('Zend_Locale');   
         
-        
-        
         // Get category's
         $m_cat = new Application_Model_Category();
         $this->view->cat = $m_cat->getAllCategorys(self::LIMIT_CATS, $lang);
