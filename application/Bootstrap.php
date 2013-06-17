@@ -2,6 +2,14 @@
 
 class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 {
+    public function _initSession()
+    {
+        Zend_Session::start();
+        $sessionDennis = new Zend_Session_NameSpace('sessionDennis'); // Session must be unique on each server.
+        
+        
+    }
+    
     protected function _initRegisterControllerPlugins()
     {
         $this->bootstrap('frontcontroller');
@@ -21,6 +29,7 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
         Zend_Controller_Action_HelperBroker::addHelper($search);
     }
     
+
     public function _initDbAdapter()
     {
         $this->bootstrap('db');

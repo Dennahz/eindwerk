@@ -19,7 +19,7 @@
             foreach($this->product as $product)
             {
                 ?>            
-                <li><a href="/overview/viewproduct/id/<?php echo $product['productId']; ?>"><?php echo $product['productTitle']; ?></a></li>
+                <li><a href="/overview/viewproduct/lang/<?php echo $product['locale']; ?>/id/<?php echo $product['productId']; ?>"><?php echo $product['productTitle']; ?></a></li>
                 <?php
             }
         ?>      

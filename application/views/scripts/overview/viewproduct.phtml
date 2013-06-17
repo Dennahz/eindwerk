@@ -1,0 +1,9 @@
+<div id="viewProduct">
+    <h1><?php echo $this->product['title']; ?></h1>
+    <figure>
+        <img src="http://placehold.it/250x150/ffffff" alt="placeholder" />
+    </figure>
+    <p><?php echo $this->product['content']; ?></p>
+    
+    <a href="/basket/additem/lang/<?php echo $this->product['locale']; ?>/id/<?php echo $this->product['productId'];?>/"><?php echo $this->translate('addtobasket'); ?></a>
+</div>
