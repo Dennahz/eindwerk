@@ -5,7 +5,6 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
     public function _initSession()
     {
         Zend_Session::start();
-        $sessionDennis = new Zend_Session_NameSpace('sessionDennis'); // Session must be unique on each server.
         
         
     }
