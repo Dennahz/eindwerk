@@ -34,7 +34,7 @@ class Dennis_Auth_Auth extends Zend_Controller_Plugin_Abstract{
                     
                     $role = $user->role;        
                     
-                    die($request->getModuleName());
+                    
                     //Role is een veld binnen onze usertabel
                     if($request->getModuleName() !== 'default' && $request->getModuleName() !== NULL)
                     {

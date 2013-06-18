@@ -13,7 +13,7 @@ class Dennis_Auth_Acl extends Zend_Controller_Plugin_Abstract
         /* $model_controllers = new Application_Model_Controllers();
         $controllers = $model_controllers->getControllers(); */
         
-        $controllers = array('index', 'error', 'basket', 'order', 'overview', 'noaccess', 'admin:index');
+        $controllers = array('Index', 'error', 'basket', 'order', 'overview', 'noaccess', 'admin:index', 'admin:product');
         
         foreach($roles as $role)
         {
