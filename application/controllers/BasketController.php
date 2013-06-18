@@ -15,15 +15,13 @@ class BasketController extends Zend_Controller_Action
         
         if(isset($sessionDennis->basket))
         {
-            // Yes, there is a basket, lets get all values and throw it to the view.
-            $m_product = new Application_Model_Product();
-            
-            foreach($basket as $key => $value)
-            {
-                $array();
-            }
-            
-            $this->view->basket = $array();
+            // Yes, there is a basket, throw the whole damn thing to the view.
+            $this->view->basket = $sessionDennis->basket; 
+        }
+        else
+        {
+            // No basket :(
+            $this->view->basket = false;
         }
     }
 
@@ -34,36 +32,51 @@ class BasketController extends Zend_Controller_Action
         if( (int) $id = $this->getParam('id'))
         {
             $m_product = new Application_Model_Product();
-            if(null !== $m_product->getProductById($id, $lang))
+            if(null !== $product = $m_product->getProductById($id, $lang))
             {
                 $m_basket = new Application_Model_Basket();
 
                 $sessionDennis = new Zend_Session_NameSpace('sessionDennis'); // Session must be unique on each server.
+                
+                $title   =   $product['title'];
+                $price  =   $product['price'];
 
                 // @Xavier -> I don't think Zend_Registry is of any use with this basket? 
                 // This basket is available for everyone. Even guests. Even though I prefer paying customers.
-
+                
+                
                 // First check if there is any current basket in session
-                if (!isset($sessionDennis->basket))
+                if (null === $sessionDennis->basket)
                 {            
+                    $basket[$id] = array();
+                    
                     // There is no basket. It's like there is no spoon? But is there?
-                    $basket[$id] = 1; // Create array $basket with key $id and set value to 1.
-                    $sessionDennis->basket = $basket;
+                    $basket[$id]['count']   =  1; // Create array $basket with key $id and set value to 1.
+                    $basket[$id]['title']   =  $title;
+                    $basket[$id]['price']   =  $price;
+                    $sessionDennis->basket  =  $basket;
                 }
                 else
-                {
+                {                   
                    // There is a basket ? Yihaa ! :-) 
                    $basket = $sessionDennis->basket;
 
                    // Check if item with $id exists. If true -> update with 1. If not, create it! 
                    if(key_exists($id, $basket))
-                   {
-                       $basket[$id] = $basket[$id]+1;
+                   {                       
+                       $basket[$id]['count']   = $basket[$id]['count']+1;                       
+                       $basket[$id]['price']   =  $price*$basket[$id]['count'];
                    }
                    else
                    {
-                       $basket[$id] = 1;
+                       $basket[$id] = array();
+
+                       // There is no basket. It's like there is no spoon? But is there?
+                       $basket[$id]['count']   =  1; // Create array $basket with key $id and set value to 1.
+                       $basket[$id]['title']   =  $title;
+                       $basket[$id]['price']   =  $price;
                    }
+                   
 
                    $sessionDennis->basket = $basket;
                 }
@@ -82,8 +95,19 @@ class BasketController extends Zend_Controller_Action
         }
     }
 
+    public function emptybasketAction()
+    {
+        // Empty basket
+        $sessionDennis = new Zend_Session_NameSpace('sessionDennis');
+        unset($sessionDennis->basket);
+        
+        $this->_redirect($this->view->url(array('controller' => 'index', 'action' => 'index', 'params' => array())));
+    }
+
 
 }
+
+
 
 
 

@@ -6,38 +6,32 @@ class Dennis_Auth_Acl extends Zend_Controller_Plugin_Abstract
     {
         $acl = new Zend_Acl();
         
-        $model_roles = new Application_Model_Roles();
-        $roles = $model_roles->getRoles();
+        //$model_roles = new Application_Model_Roles();
         
+        $roles = array('GUEST', 'USER', 'DEALER', 'ADMIN');    // Nu even vaste roles, maar kan ook uit de database.
         
-        //$roles = array('GUEST', 'USER', 'ADMIN');    
+        /* $model_controllers = new Application_Model_Controllers();
+        $controllers = $model_controllers->getControllers(); */
         
-        $model_controllers = new Application_Model_Controllers();
-        $controllers = $model_controllers->getControllers();
-        //$controllers = array('Users', 'index', 'Page', 'error', 'noaccess', 'Admin:index');
+        $controllers = array('index', 'error', 'basket', 'order', 'overview', 'noaccess', 'admin:index');
         
         foreach($roles as $role)
         {
-            $acl->addRole($role['name']);         
+            $acl->addRole($role);         
         }
         
         foreach($controllers as $controller)
         {
             //$acl->addResource($controller); kan ook
-            $acl->add(new Zend_Acl_Resource($controller['name'])); //Nieuwe resource toevoegen waar rechten aan toegevoegd kunnen worden
+            $acl->add(new Zend_Acl_Resource($controller)); //Nieuwe resource toevoegen waar rechten aan toegevoegd kunnen worden
                         
         }          
-        
-            
-        $model_rights = new Application_Model_Rights();
-        $rights = $model_rights->getAllRights();
-        
-        
         
           
         
         $acl->allow('ADMIN'); //Acces to everything, without controller specified
-        $acl->deny('USER');  //Deny acces to everything, without controller specified
+        $acl->allow('USER');
+        $acl->allow('GUEST'); 
         
         
         /*$acl->allow('USER', 'Page'); //Normal user has no acces to admin panel            

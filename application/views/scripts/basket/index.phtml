@@ -1,4 +1,20 @@
-<br /><br />
-<div id="view-content">
-	<p>View script for controller <b>Basket</b> and script/action name <b>index</b></p>
+<div id="viewBasket">
+    <ul>
+        <?php foreach($this->basket as $key => $value)
+        { ?>
+            <li>
+                <figure>
+                    <img src="http://lorempixel.com/200/100/" alt="<?php echo $value['title']; ?>" />
+                    <figcaption>Teaser....</figcaption>                  
+                </figure>
+                <h2><?php echo $value['title']; ?></h2>
+                <p><?php echo $value['count']; ?></p>
+                <p><?php echo $value['price']; ?></p>
+                
+                <a href="/basket/emptybasket/"><?php echo $this->translate('emptybasket'); ?></a>                
+            </li>
+        <?php
+        }
+        ?>
+    </ul>
 </div>

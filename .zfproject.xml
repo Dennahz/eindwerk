@@ -26,10 +26,13 @@
         <controllerFile controllerName="Basket">
           <actionMethod actionName="index"/>
           <actionMethod actionName="additem"/>
+          <actionMethod actionName="emptybasket"/>
         </controllerFile>
       </controllersDirectory>
       <formsDirectory>
         <formFile formName="Search"/>
+        <formFile formName="Login"/>
+        <formFile formName="Register"/>
       </formsDirectory>
       <layoutsDirectory>
         <layoutScriptsDirectory>
@@ -44,7 +47,23 @@
         <modelFile modelName="Translate"/>
         <modelFile modelName="Category"/>
       </modelsDirectory>
-      <modulesDirectory enabled="false"/>
+      <modulesDirectory>
+        <moduleDirectory moduleName="admin">
+          <configsDirectory enabled="false"/>
+          <controllersDirectory/>
+          <formsDirectory enabled="false"/>
+          <layoutsDirectory enabled="false">
+            <layoutScriptsDirectory enabled="false"/>
+          </layoutsDirectory>
+          <modelsDirectory/>
+          <servicesDirectory enabled="false"/>
+          <viewsDirectory>
+            <viewScriptsDirectory/>
+            <viewHelpersDirectory/>
+            <viewFiltersDirectory/>
+          </viewsDirectory>
+        </moduleDirectory>
+      </modulesDirectory>
       <servicesDirectory enabled="false"/>
       <viewsDirectory>
         <viewScriptsDirectory>
@@ -77,6 +96,9 @@
           </viewControllerScriptsDirectory>
           <viewControllerScriptsDirectory forControllerName="Basket">
             <viewScriptFile forActionName="additem"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Basket">
+            <viewScriptFile forActionName="emptybasket"/>
           </viewControllerScriptsDirectory>
         </viewScriptsDirectory>
         <viewHelpersDirectory/>

@@ -8,7 +8,7 @@ class Application_Model_Product extends Zend_Db_Table_Abstract
     CONST STATUS    =   'ONLINE';
     
     
-    public function getAllProducts($limit, $locale)
+    public function getAllProducts($limit, Zend_Locale $locale)
     {
         $select = $this->select(Zend_Db_Table::SELECT_WITH_FROM_PART)
                 ->setIntegrityCheck(false)
@@ -21,7 +21,7 @@ class Application_Model_Product extends Zend_Db_Table_Abstract
         return $this->fetchAll($select);
     }
     
-    public function getProductsByKeyword($key, $locale)
+    public function getProductsByKeyword($key, Zend_Locale $locale)
     {
         $select = $this->select(Zend_Db_Table::SELECT_WITH_FROM_PART)
                 ->setIntegrityCheck(false)
@@ -41,7 +41,7 @@ class Application_Model_Product extends Zend_Db_Table_Abstract
                 ->setIntegrityCheck(false)
                 ->joinLeft(array('l' => 'productLocale'),
                         'l.productId = product.productId',
-                        array('product.productId AS productId', 'l.title AS title', 'l.content AS content', 'l.locale AS locale'))
+                        array('product.productId AS productId', 'product.price AS price', 'l.title AS title', 'l.content AS content', 'l.locale AS locale'))
                 ->where('product.productId = ?', $id)
                 ->where('l.locale = ?', $locale);
         

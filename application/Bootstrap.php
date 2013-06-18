@@ -4,9 +4,7 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 {
     public function _initSession()
     {
-        Zend_Session::start();
-        
-        
+        Zend_Session::start();        
     }
     
     protected function _initRegisterControllerPlugins()
@@ -16,16 +14,21 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
         
         $front->registerPlugin(new Dennis_Controller_Plugin_Translate());
         $front->registerPlugin(new Dennis_Controller_Plugin_Navigation());
-        //$front->registerPlugin(new Dennis_Auth_Acl());
-        //$front->registerPlugin(new Dennis_Auth_Auth());
+        $front->registerPlugin(new Dennis_Auth_Acl());
+        $front->registerPlugin(new Dennis_Auth_Auth());
     }
     
     protected function _initMyActionHelpers()
-    {
-        /* Search */
+    {        
         $this->bootstrap('frontController');
+        
+        // search
         $search = Zend_Controller_Action_HelperBroker::getStaticHelper('Search');
         Zend_Controller_Action_HelperBroker::addHelper($search);
+        
+        // login
+        $login  =   Zend_Controller_Action_HelperBroker::getStaticHelper('Login');
+        Zend_Controller_Action_HelperBroker::addHelper($login);       
     }
     
 

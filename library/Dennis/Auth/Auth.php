@@ -28,16 +28,17 @@ class Dennis_Auth_Auth extends Zend_Controller_Plugin_Abstract{
                     $acl = $registry->get('Zend_Acl');                    
                     $identity = $auth->getIdentity();
                     
-                    $userModel = new Application_Model_Users();
-                    $user = $userModel->getUserByIdentity($identity);
+                    $m_user = new Application_Model_User();
+                    $user = $m_user->getUserByIdentity($identity);
                     Zend_Registry::set('user', $user);
                     
                     $role = $user->role;        
                     
-                    
+                    die($request->getModuleName());
                     //Role is een veld binnen onze usertabel
                     if($request->getModuleName() !== 'default' && $request->getModuleName() !== NULL)
                     {
+                        
                         
                         $isAllowed = $acl->isAllowed($role,
                                 $request->getModuleName() .':'.
@@ -46,6 +47,7 @@ class Dennis_Auth_Auth extends Zend_Controller_Plugin_Abstract{
                     }
                     else
                     {
+                        
                       $isAllowed = $acl->isAllowed($role,                                
                                 $request->getControllerName(),
                                 $request->getActionName());    
@@ -60,7 +62,7 @@ class Dennis_Auth_Auth extends Zend_Controller_Plugin_Abstract{
                     if(!$isAllowed)
                     {
                         $redirector = Zend_Controller_Action_HelperBroker::getStaticHelper('redirector');
-                        $redirector->gotoUrl('/noaccess');                        
+                        $redirector->gotoUrl('http://www.google.be');                        
                         
                     }
                     else
