@@ -12,12 +12,19 @@ class Application_Model_Product extends Zend_Db_Table_Abstract
     {
         $select = $this->select(Zend_Db_Table::SELECT_WITH_FROM_PART)
                 ->setIntegrityCheck(false)
-                ->joinLeft(array('l' => 'productLocale'),
+                ->distinct()
+                ->join(array('l' => 'productLocale'),
                         'l.productId = product.productId',
                         array('product.productId AS productId', 'l.title AS productTitle', 'l.locale AS locale'))
+                ->joinLeft(array('pp' => 'productPhoto'),
+                        'pp.productId = product.productId',
+                        array('pp.photoId'))
+                ->joinLeft(array('p' => 'photo'),
+                        'p.photoId = pp.photoId',
+                        array('p.name AS photoFilename', 'p.type AS photoType'))                          
                 ->where('l.locale = ?', $locale)
                 ->limit($limit);
-        
+
         return $this->fetchAll($select);
     }
     
@@ -47,6 +54,7 @@ class Application_Model_Product extends Zend_Db_Table_Abstract
         
         return $this->fetchAll($select)->current();
     }
+
 
 
 }

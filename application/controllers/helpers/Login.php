@@ -9,8 +9,7 @@ class Application_Controller_Helper_Login extends Zend_Controller_Action_Helper_
         
         $request = $this->getActionController()->getRequest();
         
-        
-        if($request->isPost() && $request->getPost('login')) {            
+        if($request->isPost() && $request->getPost('submit')) {            
             if($form->isValid($request->getPost())) {
                 $data = $form->getValues();
                 

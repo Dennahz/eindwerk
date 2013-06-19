@@ -47,6 +47,7 @@
         <modelFile modelName="Translate"/>
         <modelFile modelName="Category"/>
         <modelFile modelName="Locale"/>
+        <modelFile modelName="Photo"/>
       </modelsDirectory>
       <modulesDirectory>
         <moduleDirectory moduleName="admin">

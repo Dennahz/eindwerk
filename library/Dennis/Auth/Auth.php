@@ -10,17 +10,7 @@ class Dennis_Auth_Auth extends Zend_Controller_Plugin_Abstract{
         $auth            = Zend_Auth::getInstance();
         
         
-        
-        //If user != loggedin and is not requesting login page
-        //-> redirect to login page
-        
-        if(!$auth->hasIdentity()
-                && $request->getControllerName() != $loginController 
-                && $request->getActionName() != $loginAction)
-                {           
-                    $redirector = Zend_Controller_Action_HelperBroker::getStaticHelper('redirector');
-                    $redirector->gotoUrl('/nl_BE/login');
-                }
+     
                 
                 if($auth->hasIdentity())
                 {

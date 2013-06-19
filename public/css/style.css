@@ -1,22 +1,66 @@
+@import url('reset.css');
+
 body{font-family: verdana;font-size:11pt;}
-div#backgroundContainer{background:#ccc;margin:15px;}
-div#container{margin:auto;max-width:950px;width:100%;}
+div#backgroundContainer{margin:15px;background-image:url('/img/background.png')}
+div#container{margin:auto;max-width:1000px;width:1000px;}
 header{float:left;width:100%;}
 div#search{float:right;}
 
 ul{list-style-type:none;}
 
-/* Header */
-header{background-color:lightblue;margin-bottom:10px;}
+/* Headings */
+header h1{display:block;width:100%;height:100px;margin:0;text-indent: -9999px;}
+header h2{display:block;padding:0;margin:0;font-size:10pt;color:tomato;}
+h3{display:block;width:150px;padding:0;margin:0;font-size:9pt;}
 
-/* Nav */
-nav{float:left;}
-nav li{display:inline-block;margin:10px;background-color:gray;padding:10px;}
-nav li:first-child{margin-left:-40px;}
-nav li:hover{background-color:lightgray;}
-div#fp-cat-list{float:left;width:20%;height:300px;background-color:tomato;}
-div#fp-product-list{float:left;width:80%;}
-div#fp-product-list li{display:inline-block;width:27.40%;height:100px;padding:10px;margin:-10px 10px 25px 10px;background-color:white;}
+h2.title{margin-left:23px;font-size:10pt;color:tomato;text-transform:uppercase;}
+
+/* Header */
+header{float:left;width:100%;margin-bottom:10px;}
+    section#logo{float:left;width:65%;height:87px;background:url('/img/logo.png');background-repeat:no-repeat;}
+    
+    header div#sub{float:left;background:url('/img/nav_bg.png');width:100%;height:75px;margin-top:15px;}
+    /* Nav */
+    header nav{float:left;width:65%;}
+        header nav ul li{display:inline-block;margin:20px 0px 0px 0px;  padding:10px;background:url('/img/nav_item_bg.png')}
+        header nav li:first-child{margin-left:20px;}
+        header nav li:hover{background-color:lightgray;}    
+    
+    /* Login */
+    header section#login{float:left;width:35%;}
+        header section#login dt{margin-top:5px;}
+        header section#login label{float:left;width:125px;font-size:8pt;font-weight:bold;text-transform:uppercase;}
+        header section#login input{width:125px;height:20px;}
+        header section#login #submit{width:100px;height:30px;color:#fff;border:2px solid #fff;margin:-20px 0px 0px -40px;background-color:tomato;padding:5px;}
+        
+    /* Search */
+    header section#search{float:right;width:25%;}
+        header section#search dt{margin-top:5px;}
+        header section#search label{display:none;}
+        header section#search input{float:left;width:125px;height:20px;}
+        header section#search #submit{width:75px;height:20px;color:#fff;border:2px solid #fff;margin:-18px 0px 0px 0px;background-color:tomato;padding:0px;}
+       
+
+   /* Basket */
+   header section#basket{float:right;width:33%;font-size:8pt;}
+
+/* Content */
+div#content{float:left;width:100%;}
+
+/* Common use */
+.thumb{width:200px;}
+
+/* Frontpage */
+section#fp-cat-list{float:left;width:20%;height:300px;margin-left:-23px;}
+section#fp-cat-list li{display:block;width:95%;height:100px;background-color:#fff;margin-bottom:10px;margin-left:-18px;}
+section#fp-cat-list li:first-child{margin-top:-10px;}
+section#fp-product-list{float:left;width:80%;}
+section#fp-product-list li{display:inline-block;width:27.40%;height:175px;padding:2px;margin:-10px 30px 25px -15px;background-color:#fff;}
+
+section#fp-product-list p{font-size:8pt;margin-top:0px;}
+section#fp-product-list figure{float:left;}
+section#fp-product-list li img{width:150px;}
+
 
 
 div#clear{clear:both;}

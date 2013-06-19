@@ -14,8 +14,8 @@ class Application_Form_Search extends Zend_Form
             'required' => true,        
             ));        
 
-            $this->addElement('submit', 'go', array(
-                'label' => 'Zoeken',
+            $this->addElement('submit', 'submit', array(
+                'label' => 'fp.search',
             ));
         }
 }

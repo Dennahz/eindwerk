@@ -28,7 +28,10 @@ class OverviewController extends Zend_Controller_Action
         if( (int) $id = $this->getParam('id'))
         {
             $m_product  = new Application_Model_Product();
-            $this->view->product = $m_product->getProductById($id, $lang);                    
+            $this->view->product = $m_product->getProductById($id, $lang);   
+            
+            $m_photo    = new Application_Model_Photo();
+            $this->view->photos = $m_photo->getPhotoByProductId($id, $lang);
         }
         else
         {

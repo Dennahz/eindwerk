@@ -16,7 +16,7 @@ class Application_Form_Login extends Zend_Form
             'required' => true,        
             ));        
 
-            $this->addElement('submit', 'login', array(
+            $this->addElement('submit', 'submit', array(
                 'label' => 'login.submit',
             ));
     }

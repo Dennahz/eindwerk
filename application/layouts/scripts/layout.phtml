@@ -8,17 +8,29 @@
     <div id="backgroundContainer">
         <div id="container">
             <header>
-                <nav>
-                    <?php echo $this->navigation()->menu(); ?>
-                </nav>
-                <div id="search">
-                    <?php echo $this->searchForm($this->searchForm); ?>
-                </div>
-                <div id="login">
+                <section id="logo">
+                    <h1><a href="/">Microsoft webshop, alle Microsoft producten, all Microsoft products</a></h1>
+                    <h2><?php echo $this->translate('header.subtxt'); ?></h2>
+                </section>
+                <section id="login">
+                    <h2><?php echo $this->translate('login.title'); ?></h2>
                     <?php echo $this->loginForm($this->loginForm); ?>
-                </div>
+                </section>
+                <div id="sub">
+                    <nav>
+                        <?php echo $this->navigation()->menu(); ?>
+                    </nav>            
+                    <section id="basket">
+                        <p>Winkelmand bevat 1 item met een totaal van &euro; 500,-</p>
+                    </section>
+                    <section id="search">
+                        <?php echo $this->searchForm($this->searchForm); ?>
+                    </section>
+                </div>                   
             </header>
-            <?php echo $this->layout()->content; ?>
+            <div id="content">
+                <?php echo $this->layout()->content; ?>
+            </div>
             
             <div id="clear">&nbsp;</div>
         </div>

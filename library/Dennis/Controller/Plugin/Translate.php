@@ -25,6 +25,10 @@ class Dennis_Controller_Plugin_Translate extends Zend_Controller_Plugin_Abstract
         //Maak beschikbaar voor alle Zend componenten, overal beschikbaar
         Zend_Registry::set('Zend_Locale', $locale);
         
+   
+        
+        
+        
         $translate = new Zend_Translate('array', array('yes' => 'ja', $locale)); //Verwacht sowieso 1 input, vandaar array.
         
         $model = new Application_Model_Translate();

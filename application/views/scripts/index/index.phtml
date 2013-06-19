@@ -1,5 +1,5 @@
-<div id="fp-cat-list">
-    <h2><?php echo $this->translate('fp.cats'); ?></h2>
+<section id="fp-cat-list">
+    <h2 class="title"><?php echo $this->translate('fp.cats'); ?></h2>
     <ul>
         <?php 
             foreach($this->cat as $cat)
@@ -10,18 +10,26 @@
             }
         ?>
     </ul>
-</div>
+</section>
 
-<div id="fp-product-list">
-    <h2><?php echo $this->translate('fp.products'); ?></h2>
+<section id="fp-product-list">
+    <h2 class="title"><?php echo $this->translate('fp.products'); ?></h2>
     <ul>
          <?php 
             foreach($this->product as $product)
             {
                 ?>            
-                <li><a href="/overview/viewproduct/lang/<?php echo $product['locale']; ?>/id/<?php echo $product['productId']; ?>"><?php echo $product['productTitle']; ?></a></li>
+                <li>
+                    <figure>
+                        <a href="/overview/viewproduct/lang/<?php echo $product['locale']; ?>/id/<?php echo $product['productId']; ?>">
+                            <img class="thumb" src="/upload/<?php if($product['photoFilename'] == NULL){ echo 'nophoto.jpg'; }else{echo $product['photoFilename'] . '.' . $product['photoType'] . ''; } ?>" alt="<?php echo $product['photoFilename']; ?>" />
+                        </a>
+                    </figure>
+                    <h3><?php echo $product['productTitle']; ?> / <?php echo $product['price']; ?></h3>
+                    <p><a href="/basket/additem/lang/<?php echo $this->lang; ?>/id/<?php echo $product['productId']; ?>"><?php echo $this->translate('addtobasket'); ?></a></p>
+                </li>
                 <?php
             }
         ?>      
     </ul>
-</div>
+</section>
