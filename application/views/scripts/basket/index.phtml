@@ -1,10 +1,12 @@
-<div id="viewBasket">
-    <ul>
+<div id="content">
+    
+   <ul>
         <?php foreach($this->basket as $key => $value)
         { ?>
             <li>
+                
                 <figure>
-                    <img src="http://lorempixel.com/200/100/" alt="<?php echo $value['title']; ?>" />
+                    <img src="/upload/<?php echo $value['photoName'] . '.' . $value['photoType'] . '';?>" alt="<?php echo $value['title']; ?>" />
                     <figcaption>Teaser....</figcaption>                  
                 </figure>
                 <h2><?php echo $value['title']; ?></h2>

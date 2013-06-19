@@ -32,6 +32,8 @@ class OverviewController extends Zend_Controller_Action
             
             $m_photo    = new Application_Model_Photo();
             $this->view->photos = $m_photo->getPhotoByProductId($id, $lang);
+            
+            
         }
         else
         {

@@ -1,8 +1,12 @@
 <?php
 
+/**
+ * BasketController.
+ * Basket works with sessions, which is not perfect. HTML5 local storage?
+ */
+
 class BasketController extends Zend_Controller_Action
 {
-
     public function init()
     {
         /* Initialize action controller here */
@@ -40,20 +44,25 @@ class BasketController extends Zend_Controller_Action
                 
                 $title   =   $product['title'];
                 $price  =   $product['price'];
-
-                // @Xavier -> I don't think Zend_Registry is of any use with this basket? 
-                // This basket is available for everyone. Even guests. Even though I prefer paying customers.
-                
+                if(null !== $product['photoFilename'])
+                {
+                    $photo  =   $product['photoFilename'] . '. ' . $product['photoType'];
+                }
+                else
+                {
+                    $photo = null;
+                }
                 
                 // First check if there is any current basket in session
                 if (null === $sessionDennis->basket)
                 {            
                     $basket[$id] = array();
                     
-                    // There is no basket. It's like there is no spoon? But is there?
+                    // There is no basket. 
                     $basket[$id]['count']   =  1; // Create array $basket with key $id and set value to 1.
                     $basket[$id]['title']   =  $title;
                     $basket[$id]['price']   =  $price;
+                    $basket[$id]['photo']   = $photo;
                     $sessionDennis->basket  =  $basket;
                 }
                 else
@@ -70,11 +79,11 @@ class BasketController extends Zend_Controller_Action
                    else
                    {
                        $basket[$id] = array();
-
-                       // There is no basket. It's like there is no spoon? But is there?
+                       
                        $basket[$id]['count']   =  1; // Create array $basket with key $id and set value to 1.
                        $basket[$id]['title']   =  $title;
                        $basket[$id]['price']   =  $price;
+                       $basket[$id]['photo']   = $photo;
                    }
                    
 

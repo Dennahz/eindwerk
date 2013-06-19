@@ -15,7 +15,7 @@ class Application_Model_Photo extends Zend_Db_Table_Abstract
                         array('pp.photoId', 'photo.name AS photoName', 'photo.type AS photoType'))
                 ->where('pp.productId = ?', $id);
         
-        return $this->select($select);                      
+        return $this->fetchAll($select);                      
     }
     
 }

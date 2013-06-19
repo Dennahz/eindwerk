@@ -46,9 +46,12 @@ header{float:left;width:100%;margin-bottom:10px;}
 
 /* Content */
 div#content{float:left;width:100%;}
+div#content h1{font-size:14pt;color:tomato;text-transform:uppercase;}
 
 /* Common use */
 .thumb{width:200px;}
+.smallestthumb{width:150px;}
+.gallery .img{width:450px;}
 
 /* Frontpage */
 section#fp-cat-list{float:left;width:20%;height:300px;margin-left:-23px;}
@@ -60,6 +63,12 @@ section#fp-product-list li{display:inline-block;width:27.40%;height:175px;paddin
 section#fp-product-list p{font-size:8pt;margin-top:0px;}
 section#fp-product-list figure{float:left;}
 section#fp-product-list li img{width:150px;}
+
+/* View Product */
+section#gallery{float:left;width:75%;}
+div#thumbs{float:left;width:25%;}
+
+/* Basket */
 
 
 

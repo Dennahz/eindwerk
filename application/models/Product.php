@@ -23,7 +23,8 @@ class Application_Model_Product extends Zend_Db_Table_Abstract
                         'p.photoId = pp.photoId',
                         array('p.name AS photoFilename', 'p.type AS photoType'))                          
                 ->where('l.locale = ?', $locale)
-                ->limit($limit);
+                ->limit($limit)
+                ->group('product.productId');
 
         return $this->fetchAll($select);
     }
@@ -49,8 +50,16 @@ class Application_Model_Product extends Zend_Db_Table_Abstract
                 ->joinLeft(array('l' => 'productLocale'),
                         'l.productId = product.productId',
                         array('product.productId AS productId', 'product.price AS price', 'l.title AS title', 'l.content AS content', 'l.locale AS locale'))
+                ->joinLeft(array('pp' => 'productPhoto'),
+                        'pp.productId = product.productId',
+                        array('pp.photoId'))
+                ->joinLeft(array('p' => 'photo'),
+                        'p.photoId = pp.photoId',
+                        array('p.name AS photoFilename', 'p.type AS photoType'))  
                 ->where('product.productId = ?', $id)
-                ->where('l.locale = ?', $locale);
+                ->where('l.locale = ?', $locale)
+                ->group('product.productId');
+ 
         
         return $this->fetchAll($select)->current();
     }

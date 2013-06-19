@@ -1,8 +1,34 @@
-<div id="viewProduct">
+<div id="content">
     <h1><?php echo $this->product['title']; ?></h1>
-    <figure>
-        <img src="http://placehold.it/250x150/ffffff" alt="placeholder" />
-    </figure>
+    <section id="gallery" class="content">
+        <div class="slideshow-container">
+            <div id="slideshow" class="slideshow"></div>
+            <div id="caption" class="caption-container"></div>
+        </div>    
+    </section>
+    <div id="thumbs" class="navigation">
+        <ul class="thumbs noscript">
+            
+                <?php foreach($this->photos as $photo)
+                    
+                    
+    {
+      ?>
+        <li>
+            <a class="thumb" href="/upload/<?php echo $photo['name'] . '.'.$photo['type'];?>">
+                <img class="thumb" src="/upload/<?php echo $photo['name'] . '.'.$photo['type'];?>" />
+            </a>
+            
+            <div class="caption">
+                <div class="image-title"><h2 class="title"><?php echo $photo['name']; ?></h2></div>
+		<div class="image-desc"></div>   
+            </div>
+        </li>
+            
+        <?php } ?>
+                
+        </ul>
+    </div>
     <p><?php echo $this->product['content']; ?></p>
     
     <a href="/basket/additem/lang/<?php echo $this->product['locale']; ?>/id/<?php echo $this->product['productId'];?>/"><?php echo $this->translate('addtobasket'); ?></a>
