@@ -11,7 +11,7 @@ class Admin_Form_Addproduct extends Zend_Form
     
     public function setLocales($locales)
     {
-        $this->_locales = $locales;
+        //$this->_locales = $locales;
     }
     
     public function init()
@@ -24,7 +24,13 @@ class Admin_Form_Addproduct extends Zend_Form
             'required' => true
         ));
         
-        foreach($this->_locales as $locale)
+       
+        $this->addElement('select', 'status', array(
+            'label' => 'Status', 'value' => 'Status',
+            'multiOptions' => array('ONLINE' => 'online', 'OFFLINE' => 'offline')
+        ));
+        
+        /*foreach($this->_locales as $locale)
         {           
             $this->addElement('text', 'title[' . $locale['localeId'] . ']', array(
             'label' => 'Titel ' . $locale['name'] . '',
@@ -43,7 +49,24 @@ class Admin_Form_Addproduct extends Zend_Form
             'rows' => 5
             ));    
 
-        }    
+        }    */
+        
+        $this->addElement('text', 'title', array(
+            'label' => 'Titel',
+            'required' => false,        
+            ));        
+            
+            $this->addElement('text', 'teaser', array(
+            'label' => 'Teaser',
+            'required' => false,        
+            ));        
+            
+            $this->addElement('textarea', 'content', array(
+            'label' => 'Content',
+            'required' => false,      
+            'cols' => 40,
+            'rows' => 5
+            ));    
             
         $this->addElement('file', 'photo1', array(
             'label' => 'Foto 1',

@@ -68,8 +68,11 @@ section#fp-product-list li img{width:150px;}
 section#gallery{float:left;width:75%;}
 div#thumbs{float:left;width:25%;}
 
-/* Basket */
+/* Search and Basket layout (same) */
+div#content ul#items li.item{width:100%;float:left;border-bottom:1px solid #000;}
+div#content ul#items li.item figure{float:left;width:30%;}
+div#content ul#items li.item h2{width:60%;display:inline-block;float:left;clear:right;color:tomato;}
+div#content ul#items li.item p{font-size:8pt;}
 
-
-
+/* Clear ! */
 div#clear{clear:both;}

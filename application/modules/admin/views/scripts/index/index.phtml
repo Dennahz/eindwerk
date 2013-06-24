@@ -1,4 +1,13 @@
-<br /><br />
-<div id="view-content">
-	<p>View script for controller <b>Index</b> and script/action name <b>index</b></p>
+<div id="content">
+    <ul id="items">
+        <?php foreach($this->products as $key => $value)
+        { ?>
+            <li class="item">
+                <h2><?php echo $value['productTitle']; ?></h2>
+                <a href="/admin/product/delete/id/<?php echo $value['productId']; ?>">Verwijderen</a> - <a href="/admin/product/edit/id/<?php echo $value['productId']; ?>">Aanpassen</a>              
+            </li>
+        <?php
+        }
+        ?>
+    </ul>
 </div>

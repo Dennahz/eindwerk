@@ -53,6 +53,7 @@
         <modelFile modelName="Category"/>
         <modelFile modelName="Locale"/>
         <modelFile modelName="Photo"/>
+        <modelFile modelName="ProductLocale"/>
       </modelsDirectory>
       <modulesDirectory>
         <moduleDirectory moduleName="admin">

@@ -15,7 +15,7 @@ class Application_Model_Product extends Zend_Db_Table_Abstract
                 ->distinct()
                 ->join(array('l' => 'productLocale'),
                         'l.productId = product.productId',
-                        array('product.productId AS productId', 'l.title AS productTitle', 'l.locale AS locale'))
+                        array('product.productId AS productId', 'product.price AS productPrice', 'l.title AS productTitle', 'l.locale AS locale'))
                 ->joinLeft(array('pp' => 'productPhoto'),
                         'pp.productId = product.productId',
                         array('pp.photoId'))
@@ -36,9 +36,16 @@ class Application_Model_Product extends Zend_Db_Table_Abstract
                 ->joinLeft(array('l' => 'productLocale'),
                         'l.productId = product.productId',
                         array('product.productId AS productId', 'l.title AS title', 'l.teaser AS teaser', 'l.locale AS locale'))
+                ->joinLeft(array('pp' => 'productPhoto'),
+                        'pp.productId = product.productId',
+                        array('pp.photoId'))
+                ->joinLeft(array('p' => 'photo'),
+                        'p.photoId = pp.photoId',
+                        array('p.name AS photoName', 'p.type AS photoType'))     
                 ->where('l.title = ?', $key)
                 ->orwhere('l.content LIKE "%' . $key . '%"')
-                ->where('l.locale = ?', $locale);
+                ->where('l.locale = ?', $locale)
+                ->group('product.productId');
         
         return $this->fetchAll($select);
     }
@@ -63,8 +70,22 @@ class Application_Model_Product extends Zend_Db_Table_Abstract
         
         return $this->fetchAll($select)->current();
     }
-
-
-
+    
+    public function addNewProduct($params)
+    {
+        // Params for table 'product'
+        $product = array('label' => null,
+                         'status' => $params['status'],
+                         'price' => $params['price']);
+                
+        $insert = $this->insert($product);
+        return $insert;
+    }
+    
+    public function deleteProduct($id)
+    {
+        $where = $this->getAdapter()->quoteInto('productId = ?', $id); 
+        $delete = $this->delete($where);
+    }
 }
 

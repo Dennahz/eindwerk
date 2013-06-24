@@ -1,12 +1,14 @@
-<div id="search-results">
-    <ul>
+<div id="content">
+    <ul id="items">
         <?php foreach($this->result as $result)
         {
             
         ?>
-        <li>
+        <li class="item">
             <figure>
-                <img src="http://placehold.it/250x150/ffffff" alt="placeholder" />
+                <a href="/overview/viewproduct/lang/<?php echo $result['locale']; ?>/id/<?php echo $result['productId']; ?>">
+                    <img class="thumb" src="/upload/<?php echo $result['photoName'] . '.' . $result['photoType'] . '';?>" alt="<?php echo $result['title']; ?>" />
+                </a>
             </figure>
             <h2><?php echo $result['title']; ?></h2>
             <p><?php echo $result['teaser']; ?></p>

@@ -1,10 +1,9 @@
 <div id="content">
     
-   <ul>
+   <ul id="items">
         <?php foreach($this->basket as $key => $value)
         { ?>
-            <li>
-                
+            <li class="item">
                 <figure>
                     <img src="/upload/<?php echo $value['photoName'] . '.' . $value['photoType'] . '';?>" alt="<?php echo $value['title']; ?>" />
                     <figcaption>Teaser....</figcaption>                  

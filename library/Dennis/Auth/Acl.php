@@ -13,7 +13,7 @@ class Dennis_Auth_Acl extends Zend_Controller_Plugin_Abstract
         /* $model_controllers = new Application_Model_Controllers();
         $controllers = $model_controllers->getControllers(); */
         
-        $controllers = array('Index', 'error', 'basket', 'order', 'overview', 'user', 'noaccess', 'admin:index', 'admin:product');
+        $controllers = array('index', 'error', 'page', 'basket', 'order', 'overview', 'user', 'noaccess', 'admin:index', 'admin:product');
         
         foreach($roles as $role)
         {
@@ -30,13 +30,9 @@ class Dennis_Auth_Acl extends Zend_Controller_Plugin_Abstract
         
         $acl->allow('ADMIN'); //Acces to everything, without controller specified
         $acl->allow('USER');
+        $acl->allow('DEALER');
         $acl->allow('GUEST');
         $acl->deny('GUEST', 'order'); 
-        
-        
-        
-        /*$acl->allow('USER', 'Page'); //Normal user has no acces to admin panel            
-        $acl->allow('USER', 'Users');            */
             
         Zend_Registry::set('Zend_Acl', $acl); 
     }    

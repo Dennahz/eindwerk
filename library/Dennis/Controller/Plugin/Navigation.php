@@ -17,7 +17,7 @@ class Dennis_Controller_Plugin_Navigation extends Zend_Controller_Plugin_Abstrac
         $menu = new Zend_Navigation_Page_Mvc(
                     array(            
                         'label' => 'Index ',
-                        'controller' => 'Index',
+                        'controller' => 'index',
                         'action' => 'index',
                         //'route' => 'page',
                         'params' => array('lang' => $locale)));
@@ -29,7 +29,7 @@ class Dennis_Controller_Plugin_Navigation extends Zend_Controller_Plugin_Abstrac
             $menu = new Zend_Navigation_Page_Mvc(
                     array(            
                         'label' => $page['title'],
-                        'controller' => 'Page',
+                        'controller' => 'page',
                         'action' => 'view',
                         
                         //'route' => 'page',
