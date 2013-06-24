@@ -41,7 +41,7 @@ class Application_Model_Page extends Zend_Db_Table_Abstract
                 ->setIntegrityCheck(false)
                 ->join(array('l' => 'pageLocale'),
                         'l.pageId = page.pageId',
-                        array('page.pageId AS pageId', 'l.title AS title', 'l.content AS content'))
+                        array('page.pageId AS pageId', 'l.slug AS slug', 'l.title AS title', 'l.content AS content'))
                 
                 ->where('l.locale = ?', $lang);
         

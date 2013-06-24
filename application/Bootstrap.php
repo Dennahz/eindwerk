@@ -52,9 +52,10 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 
         // add custom route
         // ':' before param = $_GET
-        $router->addRoute('lang', new Zend_Controller_Router_Route(':lang', array(
+        $router->addRoute('front', new Zend_Controller_Router_Route(':lang', array(
             'controller' => 'index',
-            'action' => 'index'
+            'action' => 'index',
+            'lang' => 'lang'
         )));
                 
          $router->addRoute('login', new Zend_Controller_Router_Route(':lang/login', array(
@@ -71,6 +72,24 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
             'controller' => 'page',
             'action' => 'view',
             'slug' => 'slug'
+        )));
+        
+        $router->addRoute('product', new Zend_Controller_Router_Route(':lang/product/:slug', array(
+            'controller' => 'overview',
+            'action' => 'viewProduct',
+            'slug' => 'slug'
+        )));
+        
+        $router->addRoute('addtobasket', new Zend_Controller_Router_Route(':lang/addtobasket/:slug', array(
+            'controller' => 'basket',
+            'action' => 'additem',
+            'slug' => 'slug'
+        )));
+        
+        $router->addRoute('emptybasket', new Zend_Controller_Router_Route(':lang/emptybasket', array(
+            'controller' => 'basket',
+            'action' => 'emptybasket',
+            
         )));
         
         $router->addRoute('product', new Zend_Controller_Router_Route(':lang/product/:slug', array(

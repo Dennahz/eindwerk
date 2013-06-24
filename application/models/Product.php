@@ -15,7 +15,7 @@ class Application_Model_Product extends Zend_Db_Table_Abstract
                 ->distinct()
                 ->join(array('l' => 'productLocale'),
                         'l.productId = product.productId',
-                        array('product.productId AS productId', 'product.price AS productPrice', 'l.title AS productTitle', 'l.locale AS locale'))
+                        array('product.productId AS productId', 'l.slug AS slug', 'product.price AS productPrice', 'l.title AS productTitle', 'l.locale AS locale'))
                 ->joinLeft(array('pp' => 'productPhoto'),
                         'pp.productId = product.productId',
                         array('pp.photoId'))
@@ -23,6 +23,7 @@ class Application_Model_Product extends Zend_Db_Table_Abstract
                         'p.photoId = pp.photoId',
                         array('p.name AS photoFilename', 'p.type AS photoType'))                          
                 ->where('l.locale = ?', $locale)
+                ->where('product.status = ?', self::STATUS)
                 ->limit($limit)
                 ->group('product.productId');
 

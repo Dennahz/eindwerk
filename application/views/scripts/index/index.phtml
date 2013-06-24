@@ -21,12 +21,12 @@
                 ?>            
                 <li>
                     <figure>
-                        <a href="/overview/viewproduct/lang/<?php echo $product['locale']; ?>/id/<?php echo $product['productId']; ?>">
+                        <a href="/<?php echo $product['locale']; ?>/product/<?php echo $product['slug']; ?>">
                             <img class="thumb" src="/upload/<?php if($product['photoFilename'] == NULL){ echo 'nophoto.jpg'; }else{echo $product['photoFilename'] . '.' . $product['photoType'] . ''; } ?>" alt="<?php echo $product['photoFilename']; ?>" />
                         </a>
                     </figure>
                     <h3><?php echo $product['productTitle']; ?> / <?php echo $product['price']; ?></h3>
-                    <p><a href="/basket/additem/lang/<?php echo $this->lang; ?>/id/<?php echo $product['productId']; ?>"><?php echo $this->translate('addtobasket'); ?></a></p>
+                    <p><a href="<?php echo $product['locale']; ?>/addtobasket/<?php echo $product['slug']; ?>"><?php echo $this->translate('addtobasket'); ?></a></p>
                 </li>
                 <?php
             }
