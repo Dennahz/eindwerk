@@ -25,20 +25,14 @@ class OverviewController extends Zend_Controller_Action
     {
         $lang = Zend_Registry::get('Zend_Locale');
         
-        if( (int) $id = $this->getParam('id'))
-        {
-            $m_product  = new Application_Model_Product();
-            $this->view->product = $m_product->getProductById($id, $lang);   
+        $slug = $this->getParam('slug');
+        
+        
+        $m_product  = new Application_Model_Product();
+        $this->view->product = $m_product->getProductBySlug($slug, $lang);   
             
-            $m_photo    = new Application_Model_Photo();
-            $this->view->photos = $m_photo->getPhotoByProductId($id, $lang);
-            
-            
-        }
-        else
-        {
-            die("ERROR");
-        }
+        $m_photo    = new Application_Model_Photo();
+        $this->view->photos = $m_photo->getPhotoByProductId($id, $lang);
     }
 
 

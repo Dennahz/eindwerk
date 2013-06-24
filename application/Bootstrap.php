@@ -72,6 +72,12 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
             'action' => 'view',
             'slug' => 'slug'
         )));
+        
+        $router->addRoute('product', new Zend_Controller_Router_Route(':lang/product/:slug', array(
+            'controller' => 'overview',
+            'action' => 'viewProduct',
+            'slug' => 'slug'
+        )));
 
         
    

@@ -71,6 +71,26 @@ class Application_Model_Product extends Zend_Db_Table_Abstract
         return $this->fetchAll($select)->current();
     }
     
+    public function getProductBySlug($slug, Zend_Locale $locale)
+    {
+        $select = $this->select(Zend_Db_Table::SELECT_WITH_FROM_PART)
+                ->setIntegrityCheck(false)
+                ->join(array('l' => 'productLocale'),
+                        'l.productId = product.productId',
+                        array('product.productId AS productId', 'product.price AS price', 'l.slug', 'l.title AS title', 'l.content AS content', 'l.locale AS locale'))
+                ->joinLeft(array('pp' => 'productPhoto'),
+                        'pp.productId = product.productId',
+                        array('pp.photoId'))
+                ->joinLeft(array('p' => 'photo'),
+                        'p.photoId = pp.photoId',
+                        array('p.name AS photoFilename', 'p.type AS photoType'))  
+                ->where('l.slug = ?', $slug)
+                ->where('l.locale = ?', $locale)
+                ->group('product.productId');
+ 
+        return $this->fetchAll($select)->current();
+    }
+    
     public function addNewProduct($params)
     {
         // Params for table 'product'
