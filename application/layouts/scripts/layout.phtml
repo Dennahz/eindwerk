@@ -26,7 +26,7 @@
                         <?php echo $this->navigation()->menu(); ?>
                     </nav>            
                     <section id="basket">
-                        <p>Winkelmand bevat 1 item met een totaal van &euro; 500,-</p>
+                        <p><?php echo $this->translate('basket.contains'); ?> <?php echo $this->basketItems; ?> <?php echo $this->translate('basket.item'); ?> <?php echo $this->translate('basket.total'); ?> &euro; 500,-</p>
                     </section>
                     <section id="search">
                         <?php echo $this->searchForm($this->searchForm); ?>

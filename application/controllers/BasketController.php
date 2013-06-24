@@ -21,6 +21,7 @@ class BasketController extends Zend_Controller_Action
         {
             // Yes, there is a basket, throw the whole damn thing to the view.
             $this->view->basket = $sessionDennis->basket; 
+            
         }
         else
         {
@@ -44,6 +45,7 @@ class BasketController extends Zend_Controller_Action
                 
                 $title   =   $product['title'];
                 $price  =   $product['price'];
+                
                 if(null !== $product['photoFilename'])
                 {
                     $photo  =   $product['photoFilename'] . '. ' . $product['photoType'];
@@ -64,17 +66,29 @@ class BasketController extends Zend_Controller_Action
                     $basket[$id]['price']   =  $price;
                     $basket[$id]['photo']   = $photo;
                     $sessionDennis->basket  =  $basket;
+                    
+                    $count = 1;
+                    
+                    $sessionDennis->basketItems = $count;
+                    
+                    
                 }
                 else
                 {                   
                    // There is a basket ? Yihaa ! :-) 
                    $basket = $sessionDennis->basket;
-
+                   $count = $sessionDennis->basketItems;
+                   
+                   
+                   
+                   
                    // Check if item with $id exists. If true -> update with 1. If not, create it! 
                    if(key_exists($id, $basket))
                    {                       
                        $basket[$id]['count']   = $basket[$id]['count']+1;                       
                        $basket[$id]['price']   =  $price*$basket[$id]['count'];
+                       $count++;
+                       
                    }
                    else
                    {
@@ -84,11 +98,19 @@ class BasketController extends Zend_Controller_Action
                        $basket[$id]['title']   =  $title;
                        $basket[$id]['price']   =  $price;
                        $basket[$id]['photo']   = $photo;
+                       
+                       $count++;
                    }
+                   
+                   
                    
 
                    $sessionDennis->basket = $basket;
+                   $sessionDennis->basketItems = $count;
+                   
+                   
                 }
+                
 
                 // Ok, item added, lets go to the basket itself. 
                 $this->_redirect($this->view->url(array('controller' => 'basket', 'action' => 'index', 'params' => array())));
