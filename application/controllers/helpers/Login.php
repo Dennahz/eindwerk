@@ -38,15 +38,12 @@ class Application_Controller_Helper_Login extends Zend_Controller_Action_Helper_
                
                 
                  $request = $this->getActionController()->getRequest();
-                $urlOptions = array('controller' => 'overview', 
-                    'action' => 'search',
-                    'lang' => 'nl_BE',
-                    'keyword' => $keyword);
+                $urlOptions = array('controller' => 'index', 
+                    'action' => 'index'
+                    );
                 
                 $redirector = new Zend_Controller_Action_Helper_Redirector();
                 $redirector->gotoRouteAndExit($urlOptions, null, false);
-                 
-                 
             }
         }
         

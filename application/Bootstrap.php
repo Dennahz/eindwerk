@@ -39,6 +39,42 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
         //Maak een soort van globale variabele
         Zend_Registry::set('db', $db);
     }
+    
+    /**
+     * Creates all custom routes
+     * @return Zend_Controller_Router_Route
+     */
+    
+    public function _initRouter(array $options = null)
+    {
+  
+        $router = $this->getResource('frontcontroller')->getRouter();
 
+        // add custom route
+        // ':' before param = $_GET
+        $router->addRoute('lang', new Zend_Controller_Router_Route(':lang', array(
+            'controller' => 'index',
+            'action' => 'index'
+        )));
+                
+         $router->addRoute('login', new Zend_Controller_Router_Route(':lang/login', array(
+            'controller' => 'user',
+            'action' => 'login'
+        )));
+         
+         $router->addRoute('logout', new Zend_Controller_Router_Route(':lang/logout', array(
+            'controller' => 'user',
+            'action' => 'logout'
+        )));
+ 
+        $router->addRoute('page', new Zend_Controller_Router_Route(':lang/page/:slug', array(
+            'controller' => 'page',
+            'action' => 'view',
+            'slug' => 'slug'
+        )));
+
+        
+   
+    }
 }
 

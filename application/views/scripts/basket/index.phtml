@@ -5,17 +5,16 @@
         { ?>
             <li class="item">
                 <figure>
-                    <img src="/upload/<?php echo $value['photoName'] . '.' . $value['photoType'] . '';?>" alt="<?php echo $value['title']; ?>" />
-                    <figcaption>Teaser....</figcaption>                  
+                    <img class="thumb" src="/upload/<?php echo $value['photo']; ?>" alt="<?php echo $value['title']; ?>" />                                     
                 </figure>
                 <h2><?php echo $value['title']; ?></h2>
-                <p><?php echo $value['count']; ?></p>
-                <p><?php echo $value['price']; ?></p>
-                
-                <a href="/basket/emptybasket/"><?php echo $this->translate('emptybasket'); ?></a> - <a href="/order"><?php echo $this->translate('order'); ?></a>              
+                <p>Aantal <?php echo $value['count']; ?> - Totaalprijs <?php echo $value['price']; ?></p>
             </li>
         <?php
         }
         ?>
     </ul>
+    
+     <a href="/basket/emptybasket/"><?php echo $this->translate('emptybasket'); ?></a> - <a href="/order"><?php echo $this->translate('order'); ?></a>              
+
 </div>

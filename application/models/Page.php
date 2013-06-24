@@ -21,6 +21,19 @@ class Application_Model_Page extends Zend_Db_Table_Abstract
         
         return $this->fetchAll($select)->current();
     }
+
+    public function getPageBySlug($slug, Zend_Locale $lang)
+    {
+        $select = $this->select(Zend_Db_Table::SELECT_WITH_FROM_PART)
+                ->setIntegrityCheck(false)
+                ->join(array('l' => 'pageLocale'),
+                        'l.pageId = page.pageId',
+                        array('page.pageId AS pageId', 'l.title AS title', 'l.content AS content', 'l.slug'))
+                ->where('l.slug = ?', $slug)
+                ->where('l.locale = ?', $lang);
+      
+        return $this->fetchAll($select)->current();
+    }
     
     public function getMenu(Zend_Locale $lang)
     {

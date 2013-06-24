@@ -55,7 +55,6 @@ class Admin_ProductController extends Zend_Controller_Action
         $delete2 = $m_productLocale->deleteProductLocale($id);
         
         $this->_redirect($this->view->url(array('controller' => 'index', 'action' => 'index', 'params' => array())));
-
     }
 
 

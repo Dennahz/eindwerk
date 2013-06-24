@@ -48,7 +48,7 @@ class BasketController extends Zend_Controller_Action
                 
                 if(null !== $product['photoFilename'])
                 {
-                    $photo  =   $product['photoFilename'] . '. ' . $product['photoType'];
+                    $photo  =   $product['photoFilename'] . '.' . $product['photoType'];
                 }
                 else
                 {

@@ -72,7 +72,7 @@ div#thumbs{float:left;width:25%;}
 div#content ul#items li.item{width:100%;float:left;border-bottom:1px solid #000;}
 div#content ul#items li.item figure{float:left;width:30%;}
 div#content ul#items li.item h2{width:60%;display:inline-block;float:left;clear:right;color:tomato;}
-div#content ul#items li.item p{font-size:8pt;}
+div#content ul#items li.item p{float:left;font-size:8pt;}
 
 /* Clear ! */
 div#clear{clear:both;}
