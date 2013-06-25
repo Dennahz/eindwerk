@@ -41,6 +41,15 @@ class Dennis_Controller_Plugin_Navigation extends Zend_Controller_Plugin_Abstrac
             
         }
         
+        $menu = new Zend_Navigation_Page_Mvc(
+                    array(            
+                        'label' => 'Admin ',
+                        'controller' => 'index',
+                        'action' => 'index',
+                        'route' => 'admin',
+                        'params' => array('lang' => $locale)));
+        
+        $navigation->addPage($menu);
         
         
         Zend_Registry::set('Zend_Navigation', $navigation);

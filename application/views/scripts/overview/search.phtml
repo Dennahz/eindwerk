@@ -6,7 +6,7 @@
         ?>
         <li class="item">
             <figure>
-                <a href="/overview/viewproduct/lang/<?php echo $result['locale']; ?>/id/<?php echo $result['productId']; ?>">
+                <a href="/<?php echo $result['locale']; ?>/product/<?php echo $result['slug']; ?>">
                     <img class="thumb" src="/upload/<?php echo $result['photoName'] . '.' . $result['photoType'] . '';?>" alt="<?php echo $result['title']; ?>" />
                 </a>
             </figure>

@@ -52,6 +52,17 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 
         // add custom route
         // ':' before param = $_GET
+        
+        
+        $router->addRoute('admin',
+                new Zend_Controller_Router_Route('admin/:controller/:action', array(
+                    'module'        => 'admin',
+                    'controller'    => 'index',
+                    'action'        => 'Index'
+                )));   
+        
+     
+        
         $router->addRoute('front', new Zend_Controller_Router_Route(':lang', array(
             'controller' => 'index',
             'action' => 'index',
@@ -76,7 +87,7 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
         
         $router->addRoute('product', new Zend_Controller_Router_Route(':lang/product/:slug', array(
             'controller' => 'overview',
-            'action' => 'viewProduct',
+            'action' => 'viewproduct',
             'slug' => 'slug'
         )));
         
@@ -92,11 +103,18 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
             
         )));
         
-        $router->addRoute('product', new Zend_Controller_Router_Route(':lang/product/:slug', array(
+        
+        $router->addRoute('search', new Zend_Controller_Router_Route(':lang/search/:keyword', array(
             'controller' => 'overview',
-            'action' => 'viewProduct',
-            'slug' => 'slug'
+            'action' => 'search',
+            'keyword' => 'keyword'
         )));
+        $router->addRoute('order', new Zend_Controller_Router_Route(':lang/order', array(
+            'controller' => 'order',
+            'action' => 'index',
+            
+        )));
+       
 
         
    

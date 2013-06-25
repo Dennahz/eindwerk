@@ -31,5 +31,5 @@
     </div>
     <p><?php echo $this->product['content']; ?></p>
     
-    <a href="/basket/additem/lang/<?php echo $this->product['locale']; ?>/id/<?php echo $this->product['productId'];?>/"><?php echo $this->translate('addtobasket'); ?></a>
+    <a href="/<?php echo $this->product['locale']; ?>/addtobasket/<?php echo $this->product['slug'];?>"><?php echo $this->translate('addtobasket'); ?></a>
 </div>

@@ -29,10 +29,12 @@ class OverviewController extends Zend_Controller_Action
         
         
         $m_product  = new Application_Model_Product();
-        $this->view->product = $m_product->getProductBySlug($slug, $lang);   
+        $product = $m_product->getProductBySlug($slug, $lang); 
+        $this->view->product =   $product;
             
+        
         $m_photo    = new Application_Model_Photo();
-        $this->view->photos = $m_photo->getPhotoByProductId($id, $lang);
+        $this->view->photos = $m_photo->getPhotoByProductId($product['productId'], $lang);
     }
 
 

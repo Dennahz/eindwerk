@@ -17,14 +17,16 @@ class Application_Controller_Helper_Search extends Zend_Controller_Action_Helper
                 
                 $keyword = $data['search'];
                 
+                
                  $request = $this->getActionController()->getRequest();
-                $urlOptions = array('controller' => 'overview', 
+                    $urlOptions = array('controller' => 'overview', 
                     'action' => 'search',
                     'lang' => 'nl_BE',
                     'keyword' => $keyword);
                 
+                
                 $redirector = new Zend_Controller_Action_Helper_Redirector();
-                $redirector->gotoRouteAndExit($urlOptions, null, false);
+                $redirector->gotoUrl('/nl_BE/search/' . $keyword);
                  
                  
             }

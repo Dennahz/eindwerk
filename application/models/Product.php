@@ -36,7 +36,7 @@ class Application_Model_Product extends Zend_Db_Table_Abstract
                 ->setIntegrityCheck(false)
                 ->joinLeft(array('l' => 'productLocale'),
                         'l.productId = product.productId',
-                        array('product.productId AS productId', 'l.title AS title', 'l.teaser AS teaser', 'l.locale AS locale'))
+                        array('product.productId AS productId', 'l.slug AS slug', 'l.title AS title', 'l.teaser AS teaser', 'l.locale AS locale'))
                 ->joinLeft(array('pp' => 'productPhoto'),
                         'pp.productId = product.productId',
                         array('pp.photoId'))
@@ -51,13 +51,13 @@ class Application_Model_Product extends Zend_Db_Table_Abstract
         return $this->fetchAll($select);
     }
     
-    public function getProductById($id, Zend_Locale $locale)
+    public function getProductById($id, Zend_Locale $locale, $array)
     {
         $select = $this->select(Zend_Db_Table::SELECT_WITH_FROM_PART)
                 ->setIntegrityCheck(false)
                 ->joinLeft(array('l' => 'productLocale'),
                         'l.productId = product.productId',
-                        array('product.productId AS productId', 'product.price AS price', 'l.title AS title', 'l.content AS content', 'l.locale AS locale'))
+                        array('product.productId AS productId', 'l.slug AS slug', 'l.teaser AS teaser','product.price AS price', 'l.title AS title', 'l.content AS content', 'l.locale AS locale'))
                 ->joinLeft(array('pp' => 'productPhoto'),
                         'pp.productId = product.productId',
                         array('pp.photoId'))
@@ -68,8 +68,15 @@ class Application_Model_Product extends Zend_Db_Table_Abstract
                 ->where('l.locale = ?', $locale)
                 ->group('product.productId');
  
-        
-        return $this->fetchAll($select)->current();
+        if($array == true)
+        {
+            return $this->fetchAll($select)->current()->toArray();
+        }
+        else
+        {
+           return $this->fetchAll($select)->current();
+
+        }
     }
     
     public function getProductBySlug($slug, Zend_Locale $locale)
@@ -101,6 +108,19 @@ class Application_Model_Product extends Zend_Db_Table_Abstract
                 
         $insert = $this->insert($product);
         return $insert;
+    }
+    
+    public function editProduct($id, $params)
+    {
+        // Params for table 'product'
+        $product = array('label' => null,
+                         'status' => $params['status'],
+                         'price' => $params['price']);
+        
+        $where = $this->getAdapter()->quoteInto('productId = ?', $id);
+
+        $update = $this->update($product, $where);
+        return $update;
     }
     
     public function deleteProduct($id)

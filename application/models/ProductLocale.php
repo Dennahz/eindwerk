@@ -10,6 +10,7 @@ class Application_Model_ProductLocale extends Zend_Db_Table_Abstract
         // Params for productLocale
         $content = array('productId' => $id,
                          'locale' => 'nl_BE',
+                         'slug' => $params['slug'],
                          'title' => $params['title'],
                          'teaser' => $params['teaser'],
                          'content' => $params['content'],
@@ -17,6 +18,21 @@ class Application_Model_ProductLocale extends Zend_Db_Table_Abstract
         
         $insert = $this->insert($content);
     }
+   
+    public function editProductLocale($id, $params)
+    {
+        // Params for productLocale
+        $content = array('productId' => $id,
+                         'locale' => 'nl_BE',
+                         'slug' => $params['slug'],
+                         'title' => $params['title'],
+                         'teaser' => $params['teaser'],
+                         'content' => $params['content'],
+                         'translated' => 'YES');
+        
+        $where = $this->getAdapter()->quoteInto('productId = ?', $id); 
+        $update = $this->update($content, $where);
+     }
     
     public function deleteProductLocale($id)
     {

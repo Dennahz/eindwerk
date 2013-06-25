@@ -128,8 +128,9 @@ class BasketController extends Zend_Controller_Action
         // Empty basket
         $sessionDennis = new Zend_Session_NameSpace('sessionDennis');
         unset($sessionDennis->basket);
+        $this->_helper->redirector->gotoSimple('params', 'index', 'index', array(), array('lang' => $lang));
+
         
-        $this->_redirect($this->view->url(array('controller' => 'index', 'action' => 'index', 'params' => array())));
     }
 
 

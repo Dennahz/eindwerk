@@ -53,17 +53,21 @@ class Admin_Form_Addproduct extends Zend_Form
         
         $this->addElement('text', 'title', array(
             'label' => 'Titel',
-            'required' => false,        
+            'required' => true,        
+            ));        
+        $this->addElement('text', 'slug', array(
+            'label' => 'Slug',
+            'required' => true,        
             ));        
             
             $this->addElement('text', 'teaser', array(
             'label' => 'Teaser',
-            'required' => false,        
+            'required' => true,        
             ));        
             
             $this->addElement('textarea', 'content', array(
             'label' => 'Content',
-            'required' => false,      
+            'required' => true,      
             'cols' => 40,
             'rows' => 5
             ));    

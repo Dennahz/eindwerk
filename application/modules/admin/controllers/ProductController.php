@@ -56,6 +56,39 @@ class Admin_ProductController extends Zend_Controller_Action
         
         $this->_redirect($this->view->url(array('controller' => 'index', 'action' => 'index', 'params' => array())));
     }
+    
+    public function editAction()
+    {
+        $id = $this->getParam('id');
+        $locale = Zend_Registry::get('Zend_Locale');
+         // Get form
+        $form = new admin_Form_Addproduct();
+        $this->view->form = $form;
+        
+        $m_product = new Application_Model_Product();
+        $product = $m_product->getProductById($id, $locale, true);
+        $form->populate($product);
+        
+        if($this->getRequest()->getPost())
+        {  
+            $postParams = $this->getRequest()->getPost(); //$_POST
+            if($this->view->form->isValid($postParams))
+            {             
+                
+                /* I know this isn't the best way of doing this... */
+                $m_product = new Application_Model_Product();
+                $insert = $m_product->editProduct($id, $postParams);
+                
+                $m_productLocale = new Application_Model_ProductLocale();
+                
+                
+                $insert2 = $m_productLocale->editProductLocale($id, $postParams);
+                
+                $this->_redirect($this->view->url(array('controller' => 'index', 'action' => 'index', 'params' => array())));
+
+            }
+        }
+    }
 
 
 }
